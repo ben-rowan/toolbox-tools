@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+readonly scriptRootDir=$(dirname "$0");
+
+action="${1}";
+type="${2}";
+
+function usage {
+    echo "Usage: toolbox-tools [action] [type]";
+}
+
+case "${action}" in
+    create)
+        case "${type}" in
+            php-dev) . ${scriptRootDir}/actions/create/php-dev.bash
+            ;;
+            *) usage
+            ;;
+        esac
+    ;;
+    rm) . ${scriptRootDir}/actions/rm.bash
+    ;;
+    *) usage
+    ;;
+esac
